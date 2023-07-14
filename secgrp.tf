@@ -70,7 +70,7 @@ resource "aws_security_group" "vprofile-backend-sg" {
     from_port       = 0
     protocol        = "-1"
     to_port         = 0
-    security_groups = ["aws_security_group.vprofile-prod-sg.id"]
+    security_groups = [aws_security_group.vprofile-prod-sg.id]
   }
 }
 
