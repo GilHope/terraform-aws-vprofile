@@ -9,9 +9,6 @@ resource "aws_db_subnet_group" "vprofile-rds-subgrp" {
 resource "aws_elasticache_subnet_group" "vprofile-ecache-subgrp" {
     name = "vprofile-ecache-subgrp"
     subnet_ids = [module.vpc.private_subnets[0], module.vpc.private_subnets[1], module.vpc.private_subnets[2]]
-    tags = {
-        Name = "Subnet group for ECACHE"
-    }
 }
 
 resource "aws_db_instance" "vprofile-rds" {
@@ -24,8 +21,8 @@ resource "aws_db_instance" "vprofile-rds" {
     username                = var.dbuser
     password                = var.dbpass
     parameter_group_name    = "default.mysql5.6"
-    multi_az                = "false"
-    publicly_accessible     = "false"
+    multi_az                = false
+    publicly_accessible     = false
     skip_final_snapshot     = true
     db_subnet_group_name    = aws_db_subnet_group.vprofile-rds-subgrp.name
     vpc_security_group_ids  = [aws_security_group.vprofile-backend-sg.id]
