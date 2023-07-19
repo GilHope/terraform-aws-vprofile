@@ -106,8 +106,8 @@ resource "aws_elastic_beanstalk_environment" "vprofile-bean-prod" {
   }
 
   setting {
-    name = "StickinessEnabled"
-    namespace      = "aws:elasticbeanstalk:environment:process:default"
+    name      = "StickinessEnabled"
+    namespace = "aws:elasticbeanstalk:environment:process:default"
     value     = "true"
   }
 
